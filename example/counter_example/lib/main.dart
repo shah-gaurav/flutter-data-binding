@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
       // Step 2: Add a BindingProvider to the root of your application
       // Note: There should only be one BindingProvider in the application.
       home: BindingProvider(
-        // Step 3: (Optional) Use BindingSource to make an
+        // Optional: Use BindingSource to make an
         // instance of the model available to all child widgets.
         // Alternatively, the model can also be a property of the widget and passed
         // down to its children in the constructor or using any other mechanism.
@@ -62,7 +62,7 @@ class MyHomePage extends StatelessWidget {
             Text(
               'You have pushed the button this many times:',
             ),
-            // Step 4: Use Binding widget to bind the instance of the model to
+            // Step 3: Use Binding widget to bind the instance of the model to
             // the widget tree and tell it when the tree should be rebuilt using
             // the path parameter.
             Binding<CounterModel>(
