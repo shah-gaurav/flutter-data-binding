@@ -1,4 +1,4 @@
-import 'package:data_binding/data_binding.dart';
+import 'package:binding/binding.dart';
 
 class Item extends NotifyPropertyChanged {
   static const countPropertyName = 'count';

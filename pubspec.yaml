@@ -1,8 +1,8 @@
-name: data_binding
+name: binding
 description: A state management package for Flutter that supports data bindings. This package is inspired by .NET INotifyPropertyChanged interface and should feel familiar to .NET developers that have worked with .NET applications in WPF/Xamarin.
 version: 0.0.1
 author: Gaurav Shah <shahgaurav@yahoo.com>
-homepage: https://github.com/shah-gaurav/data-binding
+homepage: https://github.com/shah-gaurav/flutter-data-binding
 
 environment:
   sdk: ">=2.1.0 <3.0.0"

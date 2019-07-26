@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:data_binding/data_binding.dart';
+import 'package:binding/binding.dart';
 import '../model/item_model.dart';
 
 class ItemCard extends StatelessWidget {

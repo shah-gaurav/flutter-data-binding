@@ -1,4 +1,4 @@
-library data_binding;
+library binding;
 
 export 'src/binding.dart';
 export 'src/binding_provider.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:random_color/random_color.dart';
-import 'package:data_binding/data_binding.dart';
+import 'package:binding/binding.dart';
 import '../model/main_model.dart';
 import 'item_card.dart';
 

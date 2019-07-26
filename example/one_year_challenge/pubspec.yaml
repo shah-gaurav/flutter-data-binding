@@ -24,7 +24,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   random_color: ^1.0.3
-  data_binding:
+  binding:
     path: ../../
 
 dev_dependencies:
