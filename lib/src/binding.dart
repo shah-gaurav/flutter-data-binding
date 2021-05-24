@@ -10,9 +10,9 @@ class Binding<T extends NotifyPropertyChanged> extends StatefulWidget {
   final String path;
 
   Binding({
-    @required this.source,
-    @required this.builder,
-    @required this.path,
+    required this.source,
+    required this.builder,
+    required this.path,
   }) : super(key: source.key);
 
   @override
@@ -27,21 +27,21 @@ class _BindingState<T extends NotifyPropertyChanged> extends State<Binding>
     implements BindingBase<T> {
   final Widget Function(BuildContext, T) builder;
   final String path;
-  BindingProvider bindingProvider;
+  late BindingProvider bindingProvider;
 
   @override
   T source;
 
   _BindingState({
-    @required this.source,
-    @required this.builder,
-    @required this.path,
+    required this.source,
+    required this.builder,
+    required this.path,
   });
 
   @override
   void initState() {
     super.initState();
-    bindingProvider = BindingProvider.of(context);
+    bindingProvider = BindingProvider.of(context);    
     bindingProvider.add(path, this);
   }
 

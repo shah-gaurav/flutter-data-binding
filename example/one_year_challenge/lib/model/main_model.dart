@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:binding/binding.dart';
+import 'package:flutter/material.dart';
 
 import 'item_model.dart';
 import 'item_provider.dart';
@@ -11,9 +11,9 @@ class MainModel extends NotifyPropertyChanged {
 
   final itemProvider = ItemProvider();
 
-  List<Item> items;
-  Color detailedColor; // The color of the tapped card from the ListView
-  int detailedIndex; // The index of the tapped card from the ListView
+  List<Item>? items;
+  Color? detailedColor; // The color of the tapped card from the ListView
+  int? detailedIndex; // The index of the tapped card from the ListView
 
   void getItems() async {
     items = await itemProvider.fetchItems();

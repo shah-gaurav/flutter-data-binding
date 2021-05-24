@@ -5,46 +5,51 @@ import 'binding_base.dart';
 class BindingProvider extends InheritedWidget {
   final _instancesToNotify = Map<String, List<BindingBase>>();
 
-  BindingProvider({Key key, Widget child}) : super(key: key, child: child);
+  BindingProvider({Key? key, required Widget child})
+      : super(key: key, child: child);
 
   @override
   bool updateShouldNotify(InheritedWidget oldWidget) => false;
 
   static BindingProvider of(BuildContext context) {
-    final provider = context
+    var inheritedWidget = context
         .getElementForInheritedWidgetOfExactType<BindingProvider>()
-        ?.widget as BindingProvider;
-
+        ?.widget;
+    if (inheritedWidget == null) {
+      throw new Exception(
+          'BindingProvider has not been defined in the widget tree.');
+    }
+    final provider = inheritedWidget as BindingProvider;
     return provider;
   }
 
   void add(String rebuildWhenPropertyChanged, BindingBase instanceToAdd) {
-    if (!_instancesToNotify.containsKey(rebuildWhenPropertyChanged)) {
-      _instancesToNotify[rebuildWhenPropertyChanged] = [];
-    }
-    if (!_instancesToNotify[rebuildWhenPropertyChanged]
-        .contains(instanceToAdd)) {
+    List<BindingBase> list =
+        _instancesToNotify[rebuildWhenPropertyChanged] ?? [];
+    if (!list.contains(instanceToAdd)) {
       instanceToAdd.source.callback = propertyChanged;
-      _instancesToNotify[rebuildWhenPropertyChanged].add(instanceToAdd);
+      list.add(instanceToAdd);
     }
+    _instancesToNotify[rebuildWhenPropertyChanged] = list;
   }
 
   void remove(String rebuildWhenPropertyChanged, BindingBase instanceToRemove) {
-    if (!_instancesToNotify.containsKey(rebuildWhenPropertyChanged)) {
-      return;
+    List<BindingBase> list =
+        _instancesToNotify[rebuildWhenPropertyChanged] ?? [];
+    if (list.contains(instanceToRemove)) {
+      list.remove(instanceToRemove);
     }
-    if (_instancesToNotify[rebuildWhenPropertyChanged]
-        .contains(instanceToRemove)) {
-      _instancesToNotify[rebuildWhenPropertyChanged].remove(instanceToRemove);
-    }
+    _instancesToNotify[rebuildWhenPropertyChanged] = list;
   }
 
-  void propertyChanged({String propertyName, Key key}) {
-    if (_instancesToNotify.containsKey(propertyName)) {
-      for (var instanceToNotify in _instancesToNotify[propertyName]) {
-        if (instanceToNotify.source.key == key) {
-          instanceToNotify.rebuild();
-        }
+  void propertyChanged({required String propertyName, Key? key}) {
+    final instancesToNotify = _instancesToNotify[propertyName];
+    if (instancesToNotify == null) {
+      return;
+    }
+    for (var instanceToNotify in instancesToNotify) {
+      if (instanceToNotify.source.key == key) {
+        instanceToNotify.rebuild();
       }
     }
   }

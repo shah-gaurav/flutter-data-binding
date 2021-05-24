@@ -1,13 +1,14 @@
-import 'package:flutter/material.dart';
 import 'package:binding/binding.dart';
+import 'package:flutter/material.dart';
+
 import '../model/item_model.dart';
 
 class ItemCard extends StatelessWidget {
   final Item item;
   final Color color;
-  final Function onTap;
+  final Function() onTap;
 
-  ItemCard({this.item, this.color, this.onTap});
+  ItemCard({required this.item, required this.color, required this.onTap});
 
   @override
   Widget build(BuildContext context) {

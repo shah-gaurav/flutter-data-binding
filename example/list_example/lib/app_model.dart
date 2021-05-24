@@ -5,9 +5,7 @@ class AppModel extends NotifyPropertyChanged {
   List<String> _items;
   List<String> get items => _items;
 
-  AppModel() {
-    _items = <String>[];
-  }
+  AppModel() : _items = [];
 
   addItem(String item) {
     _items.add(item);

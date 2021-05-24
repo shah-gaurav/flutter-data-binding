@@ -2,11 +2,11 @@ import 'package:flutter/widgets.dart';
 
 abstract class NotifyPropertyChanged {
   Key key = UniqueKey();
-  void Function({@required String propertyName, @required Key key}) callback;
+  void Function({required String propertyName, Key? key})? callback;
 
-  void propertyChanged({@required String propertyName}) {
+  void propertyChanged({required String propertyName}) {
     if (callback != null) {
-      callback(propertyName: propertyName, key: key);
+      callback!(propertyName: propertyName, key: key);
     }
   }
 }

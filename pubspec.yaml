@@ -1,11 +1,10 @@
 name: binding
 description: A state management package for Flutter that is inspired by .NET INotifyPropertyChanged interface and should feel familiar to .NET developers.
-version: 0.1.0
-author: Gaurav Shah <shahgaurav@yahoo.com>
+version: 1.0.0
 homepage: https://github.com/shah-gaurav/flutter-data-binding
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:

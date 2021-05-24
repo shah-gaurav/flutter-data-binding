@@ -1,11 +1,12 @@
+import 'package:binding/binding.dart';
 import 'package:flutter/material.dart';
 import 'package:random_color/random_color.dart';
-import 'package:binding/binding.dart';
+
 import '../model/main_model.dart';
 import 'item_card.dart';
 
 class ItemListView extends StatelessWidget {
-  const ItemListView({Key key}) : super(key: key);
+  const ItemListView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class ItemListView extends StatelessWidget {
               )
             : ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: mainModel.items.length,
+                itemCount: mainModel.items!.length,
                 itemBuilder: (context, index) {
                   Color randColor = RandomColor()
                       .randomColor(colorBrightness: ColorBrightness.light);
@@ -29,7 +30,7 @@ class ItemListView extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: ItemCard(
-                        item: mainModel.items[index],
+                        item: mainModel.items![index],
                         color: randColor,
                         onTap: () => mainModel.showDetailed(
                           randColor,
