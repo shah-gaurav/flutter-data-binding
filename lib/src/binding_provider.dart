@@ -10,12 +10,9 @@ class BindingProvider extends InheritedWidget {
   @override
   bool updateShouldNotify(InheritedWidget oldWidget) => false;
 
-  static Type _typeOf<T>() => T;
-
   static BindingProvider of(BuildContext context) {
-    final type = _typeOf<BindingProvider>();
     final provider = context
-        .ancestorInheritedElementForWidgetOfExactType(type)
+        .getElementForInheritedWidgetOfExactType<BindingProvider>()
         ?.widget as BindingProvider;
 
     return provider;
@@ -23,7 +20,7 @@ class BindingProvider extends InheritedWidget {
 
   void add(String rebuildWhenPropertyChanged, BindingBase instanceToAdd) {
     if (!_instancesToNotify.containsKey(rebuildWhenPropertyChanged)) {
-      _instancesToNotify[rebuildWhenPropertyChanged] = List<BindingBase>();
+      _instancesToNotify[rebuildWhenPropertyChanged] = [];
     }
     if (!_instancesToNotify[rebuildWhenPropertyChanged]
         .contains(instanceToAdd)) {

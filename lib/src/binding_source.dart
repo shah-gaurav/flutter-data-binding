@@ -21,12 +21,9 @@ class BindingSource<T extends NotifyPropertyChanged> extends InheritedWidget {
   bool updateShouldNotify(_) => false;
 
   static T of<T extends NotifyPropertyChanged>(BuildContext context) {
-    final type = _typeOf<BindingSource<T>>();
-
-    BindingSource<T> provider =
-        context.ancestorInheritedElementForWidgetOfExactType(type)?.widget;
+    BindingSource<T> provider = context
+        .getElementForInheritedWidgetOfExactType<BindingSource<T>>()
+        ?.widget;
     return provider?.instance;
   }
-
-  static Type _typeOf<T>() => T;
 }

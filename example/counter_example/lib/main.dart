@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:binding/binding.dart';
+import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
@@ -70,7 +70,7 @@ class MyHomePage extends StatelessWidget {
               path: CounterModel.countPropertyName,
               builder: (_, model) => Text(
                 '${model.count}',
-                style: Theme.of(context).textTheme.display1,
+                style: Theme.of(context).textTheme.headline4,
               ),
             ),
           ],
